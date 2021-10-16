@@ -1,12 +1,15 @@
 
 package mx.com.gm.comercial.presentacion;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 import mx.com.gm.comercial.domain.*;
+import java.text.SimpleDateFormat;
 
 
 public class LocalComercialPresentacion {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         var opcion = -1;
         var scanner = new Scanner(System.in);
        
@@ -25,6 +28,7 @@ public class LocalComercialPresentacion {
             
             switch (opcion) {
                 case 1:  //HACER VALIDACIONES CORRESPONDIENTESY
+                    //El id no se pide por teclado, es autoincremento
                     System.out.println("Introduce el codigo del producto: ");
                     String codigoProductoString = scanner.nextLine();
                     int codigoProducto = Integer.parseInt(codigoProductoString);
@@ -36,13 +40,15 @@ public class LocalComercialPresentacion {
                     String precioProductoString = scanner.nextLine();
                     float precioUnitarioProducto = Float.parseFloat(precioProductoString);
                     
-                    Productos productoAAgregar = new Productos(codigoProducto,descripcionProducto,precioUnitarioProducto);
+                    Producto productoAAgregar = new Producto(codigoProducto,descripcionProducto,precioUnitarioProducto);
                     
                     break;   
                 case 2:
+                    //El id no se pide por teclado, es autoincremento
+                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                     System.out.println("Introduce la fecha de Venta del producto: ");
                     String fechaVentaString = scanner.nextLine();
-                    int fechaVenta = Integer.parseInt(fechaVentaString);
+                    Date fechaVenta = formato.parse(fechaVentaString);
                     
                     System.out.println("Introduce el número del vendedor del producto: "); //No puede introducir un número superior al número máximo de vendedores que haya
                                                                                            //Ni valores nulos o negativos
@@ -52,6 +58,7 @@ public class LocalComercialPresentacion {
                     System.out.println("Introduce el codigo del producto: ");
                     String codigoString = scanner.nextLine();
                     int codigo = Integer.parseInt(codigoString);
+                    // AQUÍ DEBEMOS DE VALIDAR QUE EXISTE EL PRODUCTO QUE SE DESEA VENDER EN EL LOCAL COMERCIAL
                     
                     System.out.println("Introduce la cantidad vendida de este producto: ");
                     String cantidadVendidaString = scanner.nextLine();
@@ -61,7 +68,7 @@ public class LocalComercialPresentacion {
                     String formaPagoString = scanner.nextLine();
                     int formaPago = Integer.parseInt(formaPagoString );
                     
-                    Ventas ventaAAgregar = new Ventas(fechaVenta,numeroVendedor,codigo,cantidadVendidaProducto,formaPago);
+                    Venta ventaAAgregar = new Venta(fechaVenta,numeroVendedor,codigo,cantidadVendidaProducto,formaPago);
                     
                     break;
                 case 3:

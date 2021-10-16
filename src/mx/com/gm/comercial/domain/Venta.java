@@ -1,42 +1,52 @@
 
 package mx.com.gm.comercial.domain;
 
+import java.util.Date;
 
-public class Ventas {
-    int fechaVenta;  //  nº con 6 cifras. Ejemplo 061021 día,mes,año
+
+public class Venta {
+    int idVenta;
+    Date fechaVenta;  //  nº con 6 cifras. Ejemplo 061021 día,mes,año
     int numeroVendedor; //numeros del 1-100
-    int codigo;
+    int codigoProducto;
     int cantidadVendidaProducto;
     int formaPago;  // Efectivo: 0 ; Débito: 1 ; Tarjeta: 2
     float precioFinalVenta; //necesito este atributo aunque esto tiene que calcularlo con el precio del producto y no pidiéndoselo al usuario por teclado
 
-    public Ventas() {
+    public Venta() {
     }
 
-    public Ventas(int fechaVenta, int numeroVendedor, int codigo, int cantidadVendidaProducto, int formaPago) {
+    public Venta(Date fechaVenta, int numeroVendedor, int codigoProducto, int cantidadVendidaProducto, int formaPago) {
         this.fechaVenta = fechaVenta;
         this.numeroVendedor = numeroVendedor;
-        this.codigo = codigo;
+        this.codigoProducto = codigoProducto;
         this.cantidadVendidaProducto = cantidadVendidaProducto;
         this.formaPago = formaPago;
-    }
+    }    
     
-    
-
-    public Ventas(int fechaVenta, int numeroVendedor, int codigo, int cantidadVendidaProducto, int formaPago,float precioFinalVenta) {
+    public Venta(int idVenta, Date fechaVenta, int numeroVendedor, int codigoProducto, int cantidadVendidaProducto, int formaPago, float precioFinalVenta) {
+        this.idVenta = idVenta;
         this.fechaVenta = fechaVenta;
         this.numeroVendedor = numeroVendedor;
-        this.codigo = codigo;
+        this.codigoProducto = codigoProducto;
         this.cantidadVendidaProducto = cantidadVendidaProducto;
         this.formaPago = formaPago;
         this.precioFinalVenta = precioFinalVenta;
+    }    
+
+    public int getIdVenta() {
+        return this.idVenta;
     }
 
-    public int getFechaVenta() {
+    public void setIdVenta(int idVenta) {
+        this.idVenta = idVenta;
+    }
+
+    public Date getFechaVenta() {
         return this.fechaVenta;
     }
 
-    public void setFechaVenta(int fechaVenta) {
+    public void setFechaVenta(Date fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
 
@@ -49,11 +59,11 @@ public class Ventas {
     }
 
     public int getCodigo() {
-        return this.codigo;
+        return this.codigoProducto;
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        this.codigoProducto = codigoProducto;
     }
 
     public int getCantidadVendidaProducto() {
@@ -82,11 +92,7 @@ public class Ventas {
 
     @Override
     public String toString() {
-        return "Ventas{" + "fechaVenta=" + fechaVenta + ", numeroVendedor=" + numeroVendedor + ", codigo=" + codigo + ", cantidadVendidaProducto=" + cantidadVendidaProducto + ", formaPago=" + formaPago + ", precioFinalVenta=" + precioFinalVenta + '}';
-    }
-
-   
-
-    
+        return "Venta{" + "idVenta=" + idVenta + ", fechaVenta=" + fechaVenta + ", numeroVendedor=" + numeroVendedor + ", codigoProducto=" + codigoProducto + ", cantidadVendidaProducto=" + cantidadVendidaProducto + ", formaPago=" + formaPago + ", precioFinalVenta=" + precioFinalVenta + '}';
+    }   
     
 }
